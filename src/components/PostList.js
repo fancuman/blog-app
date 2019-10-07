@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import requestPosts from "../actions";
+import { requestPosts } from "../actions";
+
+import UserHeader from "./UserHeader";
 class PostList extends Component {
   componentDidMount() {
     this.props.requestPosts();
@@ -9,15 +11,16 @@ class PostList extends Component {
   renderList = () => {
     if (this.props.posts.data)
       return this.props.posts.data.map(item => (
-        <div key={item.id} class="item">
-          <i class="user icon"></i>
-          <div class="content">
-            <a class="header">{item.title}</a>
-            <div class="description">{item.body}</div>
+        <div key={item.id} className="item">
+          <i className="user icon"></i>
+          <div className="content">
+            <a className="header">{item.title}</a>
+            <div className="description">{item.body}</div>
+            <UserHeader userId={item.userId} />
           </div>
         </div>
       ));
-    else return <i class="spinner icon"></i>;
+    else return <i className="spinner icon"></i>;
   };
   render() {
     this.renderList();
