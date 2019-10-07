@@ -6,11 +6,16 @@ class PostList extends Component {
     this.props.requestPosts();
   }
   render() {
+    console.log(this.props.posts);
     return <div>PostList</div>;
   }
 }
 
+const mapStateToProps = state => ({
+  posts: state.posts
+});
+
 export default connect(
-  null,
+  mapStateToProps,
   { requestPosts: requestPosts }
 )(PostList);
