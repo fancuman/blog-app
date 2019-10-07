@@ -6,9 +6,8 @@ const posts = (state = [], action) => {
       return action.payload;
 
     default:
-      break;
+      return state;
   }
-  return state;
 };
 
 export default posts;
